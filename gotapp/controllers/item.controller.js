@@ -38,9 +38,6 @@ const createChainItem = async (savedItem) => {
 
 exports.getItems = async function (req, res, next) {
     try {
-        // const username = req.query.username;
-        // const user = await userService.findUserByUsername(username);
-        // const items = await itemService.getOtherItems(user.id, cachedItems);
         return res.status(200).json({ status: 200, data: cachedItems, message: "Succesfully received items" });
     } catch (e) {
         //Return an Error Response Message with Code and the Error Message. 
@@ -53,7 +50,6 @@ exports.getMyItems = async function (req, res, next) {
         const username = req.query.username;
         const user = await userService.findUserByUsername(username);
         const items = await itemService.getMyItems(user.id, cachedItems);
-        console.log(items);
         return res.status(200).json({ status: 200, data: items, message: "Succesfully received items" });
     } catch (e) {
         //Return an Error Response Message with Code and the Error Message. 

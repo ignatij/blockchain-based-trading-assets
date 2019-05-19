@@ -1,6 +1,5 @@
-var mongoose = require('mongoose')
-var mongoosePaginate = require('mongoose-paginate')
-
+const mongoose = require('mongoose')
+const mongoosePaginate = require('mongoose-paginate')
 
 var schema = new mongoose.Schema({
     username: String,

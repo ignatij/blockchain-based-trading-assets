@@ -1,4 +1,4 @@
-var runScript = require('../run-script');
+const runScript = require('../run-script');
 
 exports.query = async function query() {
     const result = await runScript('./query.js');

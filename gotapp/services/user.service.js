@@ -55,7 +55,7 @@ exports.updateUser = async function (user) {
 
 exports.deleteUser = async function (userId) {
     try {
-        var deleted = await User.remove({_id: userId});
+        var deleted = await User.remove({ _id: userId });
         if (deleted.result.n === 0) {
             throw Error("User Could not be deleted")
         }
@@ -66,11 +66,11 @@ exports.deleteUser = async function (userId) {
 }
 
 exports.findUserByUsername = async function (userName) {
-    return User.findOne({username: userName});
+    return User.findOne({ username: userName });
 }
 
 exports.findUserById = async function (id) {
-    return User.findOne({_id: id});
+    return User.findOne({ _id: id });
 }
 
 const hashPassword = (password) => bcrypt.hashSync(password, 10);

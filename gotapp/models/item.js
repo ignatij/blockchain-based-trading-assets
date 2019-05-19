@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
-var mongoosePaginate = require('mongoose-paginate');
-var User = require('./user');
+const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate');
+const User = require('./user');
 
 var GotItemSchema = new mongoose.Schema({
     name: String,

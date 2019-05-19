@@ -24,7 +24,4 @@ router.put('/', UserController.updateUser)
 
 router.delete('/:id', UserController.removeUser)
 
-
-// Export the Router
-
 module.exports = router;

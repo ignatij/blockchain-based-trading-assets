@@ -1,8 +1,8 @@
 const express = require('express');
 const multer = require('multer');
+const itemController = require('../../controllers/item.controller');
 
 const router = express.Router();
-
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'public/images/');
@@ -12,7 +12,6 @@ const storage = multer.diskStorage({
     }
 });
 const upload = multer({storage});
-const itemController = require('../../controllers/item.controller');
 
 router.post('/', upload.single('image'), itemController.createItem);
 

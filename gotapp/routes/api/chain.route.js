@@ -1,13 +1,9 @@
-var express = require('express')
+const express = require('express')
+const router = express.Router()
+const chainController = require('../../controllers/chain.controller');
 
-var router = express.Router()
+router.get('/query', chainController.query);
 
-// Getting the Todo Controller that we just created
-
-var ChainController = require('../../controllers/chain.controller');
-
-router.get('/query', ChainController.query);
-
-router.post('/invoke', ChainController.invoke);
+router.post('/invoke', chainController.invoke);
 
 module.exports = router;

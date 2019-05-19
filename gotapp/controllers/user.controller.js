@@ -1,9 +1,6 @@
-// Accessing the Service that we just created
-
-var UserService = require('../services/user.service')
-var jwt = require('jsonwebtoken');
-var bcrypt = require('bcrypt');
-_this = this
+const userService = require('../services/user.service')
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 exports.getUsers = async function (req, res, next) {
     const page = req.query.page ? req.query.page : 1
@@ -11,13 +8,11 @@ exports.getUsers = async function (req, res, next) {
     try {
         const username = req.query.username;
 
-        const users = username ? await UserService.findUserByUsername(username) : await UserService.getUsers({}, page, limit);
+        const users = username ? await userService.findUserByUsername(username) : await userService.getUsers({}, page, limit);
         return res.status(200).json({ status: 200, data: users, message: "Succesfully Users Recieved" });
 
     } catch (e) {
-
         //Return an Error Response Message with Code and the Error Message.
-
         return res.status(400).json({ status: 400, message: e.message });
 
     }
@@ -32,7 +27,7 @@ exports.createUser = async function (req, res, next) {
         image: req.file.originalname
     }
     try {
-        const createdUser = await UserService.createUser(user)
+        const createdUser = await userService.createUser(user)
         return res.status(201).json({ status: 201, data: createdUser, message: "Succesfully Created User" })
     } catch (e) {
         return res.status(400).json({ status: 400, message: "User Creation was Unsuccesfull" })
@@ -49,7 +44,7 @@ exports.updateUser = async function (req, res, next) {
         amount: req.body.amount ? req.body.amount : null
     }
     try {
-        var updatedUser = await UserService.updateUser(user)
+        var updatedUser = await userService.updateUser(user)
         return res.status(200).json({ status: 200, data: updatedUser, message: "Succesfully Updated User" })
     } catch (e) {
         return res.status(400).json({ status: 400., message: e.message })
@@ -59,7 +54,7 @@ exports.updateUser = async function (req, res, next) {
 exports.removeUser = async function (req, res, next) {
     var id = req.params.id;
     try {
-        var deleted = await UserService.deleteUser(id)
+        var deleted = await userService.deleteUser(id)
         return res.status(204).json({ status: 204, message: "Succesfully User Deleted" })
     } catch (e) {
         return res.status(400).json({ status: 400, message: e.message })
@@ -67,7 +62,7 @@ exports.removeUser = async function (req, res, next) {
 }
 
 exports.login = async function (req, res, next) {
-    let user = await UserService.findUserByUsername(req.body.username);
+    let user = await userService.findUserByUsername(req.body.username);
     if (user) {
         if (isValid(req.body.password, user.password)) {
             let token = jwt.sign({ username: user.username }, 'secret', { expiresIn: '3h' });

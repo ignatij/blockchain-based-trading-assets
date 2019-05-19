@@ -3,7 +3,6 @@ const UserService = require('./user.service');
 
 exports.getMyItems = async function (userId, cachedItems) {
     try {
-        // let items = await Item.paginate(query, options);
         let myItems = [];
         for (let item of cachedItems.slice()) {
             if (item.owner === userId) {
