@@ -1,3 +1,9 @@
-{{user.firstName}}
-{{user.secondName}}
-{{user.amount}}
+<div class="user-tab">
+    <div class="avatar">
+        <img src="{{image_url+user.image}}" alt="">
+    </div>
+    <div class="user-info">
+        <h4>{{user.firstName}} {{user.secondName}}</h4>
+        <p *ngIf="showAmount">${{user.amount}}</p>
+    </div>
+</div>

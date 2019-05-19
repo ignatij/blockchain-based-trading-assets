@@ -22,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ItemsResolver } from './resolvers/items.resolver';
 
+
 export function tokenGetter() {
   return localStorage.getItem('token');
 }

@@ -1,5 +1,6 @@
 import { User } from '../../models/user';
 import { Component, Input, OnInit } from '@angular/core';
+import { IMAGES_URL } from '../../services/urls';
 
 @Component({
     selector: 'app-user',
@@ -8,8 +9,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
     @Input() user: User;
+    image_url = IMAGES_URL;
+
+    @Input() showAmount = true;
 
     ngOnInit() {
         console.log(this.user);
     }
+
 }

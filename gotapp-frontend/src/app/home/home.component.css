@@ -1,0 +1,30 @@
+.container {
+    margin-top: 20px;
+}
+
+.card{
+    margin: 20px auto;
+}
+.card img{
+    height: 370px;
+}
+
+.card .card-body{
+    padding: 20px 15px;
+}
+
+.card .buy-btn{
+    margin-right: 10px;
+}
+
+.card .item-price{
+    color: #5cb85c;
+    font-weight: bold;
+}
+
+.logout-btn{
+    display: inline-block;
+    float: left;
+    margin-top: 20px;
+    margin-left: 30px;
+}

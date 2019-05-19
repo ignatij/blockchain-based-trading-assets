@@ -1,13 +1,12 @@
 import { LoaderService } from './../services/loader.service';
 import { RedirectService } from '../services/redirect.service';
 import { User } from '../models/user';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Item } from '../models/item';
 import { ItemService } from '../services/item.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { IMAGES_URL } from '../services/urls';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import { UserService } from '../services/user.service';
 import { zip } from 'rxjs';
 

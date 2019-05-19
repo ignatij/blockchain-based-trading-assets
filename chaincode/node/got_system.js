@@ -46,23 +46,23 @@ let Chaincode = class {
 
     let iterator = await stub.getHistoryForKey(itemId);
     let results = [];
-    let res = {done : false};
+    let res = { done: false };
     while (!res.done) {
-        res = await iterator.next();
+      res = await iterator.next();
 
-        if (res && res.value && res.value.value) {
-            let val = res.value.value.toString('utf8');
-            if (val.length > 0) {
-                results.push(JSON.parse(val));
-            }
+      if (res && res.value && res.value.value) {
+        let val = res.value.value.toString('utf8');
+        if (val.length > 0) {
+          results.push(JSON.parse(val));
         }
-        if (res && res.done) {
-            try {
-                iterator.close();
-            }
-            catch (err) {
-            }
+      }
+      if (res && res.done) {
+        try {
+          iterator.close();
         }
+        catch (err) {
+        }
+      }
     }
     console.log(results);
     return Buffer.from(JSON.stringify(results));
@@ -76,10 +76,10 @@ let Chaincode = class {
   async addItem(stub, args) {
     console.info('============= START : Create Item ===========');
     if (args.length != 6) {
-      throw new Error('Incorrect number of arguments. Expecting 5');
+      throw new Error('Incorrect number of arguments. Expecting 6');
     }
 
-    let item = {
+    const item = {
       docType: 'item',
       name: args[1],
       description: args[2],
@@ -93,7 +93,7 @@ let Chaincode = class {
     return Buffer.from(JSON.stringify(item));
   }
 
-   async queryAll(stub, args) {
+  async queryAll(stub, args) {
 
     let iterator = await stub.getStateByRange('', '');
 
